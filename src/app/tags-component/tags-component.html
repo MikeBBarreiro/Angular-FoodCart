@@ -1,0 +1,26 @@
+
+@if (tags.length > 0) {
+    
+    <div [style.justifyContent] = "justifyContent">
+        @for(tag of tags; track tag.name){
+            <a routerLink="/tag/{{tag.name}}">
+                {{tag.name}}({{tag.count}})
+            </a>
+        }
+                            
+    </div>
+
+}
+
+@if (foodPageTags) {
+    
+    <div [style.justifyContent] = "justifyContent">
+        @for(tagName of foodPageTags; track tagName){
+            <a routerLink="/tag/{{tagName}}">
+                {{tagName}}
+            </a>
+        }
+                            
+    </div>
+
+}

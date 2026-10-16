@@ -1,0 +1,6 @@
+<div>
+    <!-- ngModel allows us to get one way binding from searchTerm property -->
+     <!-- change will run the search function after enter is pressed -->
+    <input type="text" placeholder="Search Food Mine" [(ngModel)]="searchTerm" (change)="search()">
+    <button (click)="search()">Search</button>
+</div>

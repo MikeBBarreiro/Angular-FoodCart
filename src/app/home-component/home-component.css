@@ -1,0 +1,80 @@
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a{
+    height: 22.5rem; /* 20 x 16px = 320px ..The 16px comes from the default html fontsize, however this could be changed with css on the html tag*/
+    width: 20rem;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #e72929;
+}
+
+li a:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.content{
+    padding: .5rem 1rem;
+    position: relative;
+}
+
+.favorite{
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    font-size: 1.2rem;
+}
+
+.favorite.not{
+    color: gray;
+    opacity: 0.5;
+}
+
+.stars{
+    margin-bottom: .2rem;
+}
+
+.product-item-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.origins{
+    flex:9;
+}
+
+.origins span{
+    border-radius: 2rem;
+    background-color: whitesmoke;
+    display: inline-block;
+    font-size: .7rem;
+    color: grey;
+    margin-right: .3rem;
+}
+
+.cook-time{
+    font-size: .8rem;
+    flex: 3;
+    text-align: right;
+}
+
+.price{
+    color:#414141;
+    margin-top: 0.7rem;
+}
+
+img{
+    max-height: 65%;
+}

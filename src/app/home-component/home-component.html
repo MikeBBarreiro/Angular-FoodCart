@@ -1,0 +1,56 @@
+
+<app-search-component></app-search-component>
+<app-tags-component></app-tags-component>
+
+<app-not-found-component [visible]="!foods || foods.length <= 0" resetLinkText="Reset Search"></app-not-found-component>
+
+<ul>
+
+    <!-- Commented code is how to do a for loop in Angular 16 and below 
+     The prefered modern method is being used instead, but this is noted for learning purposes.-->
+    <!-- <li *ngFor="let food of foods">
+        <img src="{{food}}" alt="">
+    </li> -->
+
+    <!-- @for (food of foods; track food){  <-- this would be done like this if it was just a list of strings. within teh angular variable .. it would be {{food}}-->
+    
+    @for (food of foods; track food.imageUrl){
+        <li>
+            <a routerLink="/food/{{food.id}}">
+                <img src="{{food.imageUrl}}" alt="">
+                <div class="content">
+                    <div class="name">
+                        {{food.name}}
+                    </div>
+                    <span class="favorite {{food.favorite? '':'not'}}">
+                        ❤
+                    </span>
+                    <!-- We are going to build our own star rating component. -->
+                    <div class="product-item-footer">
+
+                        <div class="origins">
+                            @for(origin of food.origins; track origin){
+                                <span>
+                                    {{origin}}
+                                </span>
+                            }
+                            
+                        </div>
+                        
+                        <div class="cook-time">
+                            <span>🕰️</span>
+                            {{food.cookTime}}
+                        </div>
+                    </div>
+                    <div class="price">
+                        <span>
+                            {{food.price|currency}}
+                        </span>
+                    </div>
+
+                </div>
+            </a>
+            
+        </li>
+    }
+</ul>

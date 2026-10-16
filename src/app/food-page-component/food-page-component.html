@@ -1,0 +1,47 @@
+
+<app-not-found-component [visible]="!food" notFoundMessage="Product Not Found!" resetLinkText="Back To HomePage"></app-not-found-component>
+
+@if(food){
+    <div class="container">
+        <img [src]="food.imageUrl" [alt]="food.name" />
+
+        <div class="details">
+            <div class="header">
+                <span class="name">
+                    {{food.name}}
+                </span>
+                <span class="favorite {{food.favorite? '' : 'not'}}">
+                    ❤
+                </span>
+
+            </div>
+            <div class="rating">
+                <!-- star rating componant will go here -->
+            </div>
+
+            <div class="origins">
+                @for(origin of food.origins; track origin){
+                    <span>
+                        {{origin}}
+                    </span>
+                }
+            </div>
+
+            <div class="tags">
+                <app-tags-component [foodPageTags]="food.tags" justifyContent="start"/>
+            </div>
+
+            <div class="cook-time">
+                <span>
+                    Time it takes to cook is about <strong>{{food.cookTime}}</strong> minutes.
+                </span>
+            </div>
+
+            <div class="price">
+                <span>{{food.price|currency}}</span>
+            </div>
+            
+            <button (click)="addToCart()">Add To Cart</button>
+        </div>
+    </div>
+}
