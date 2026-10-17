@@ -1,0 +1,7 @@
+<!-- @for(data of weatherData(); track data.id){
+    <p>{{data.coord.lat}}</p>
+} -->
+
+@if (weatherData(); as data) {
+  <p>Temperature: {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(2) }} °F</p>
+}

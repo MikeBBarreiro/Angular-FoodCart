@@ -7,9 +7,10 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SearchComponent } from '../search-component/search-component';
 import { TagsComponent } from '../tags-component/tags-component';
 import { NotFoundComponent } from '../not-found-component/not-found-component';
+import { WeatherComponent } from '../weather-component/weather-component';
 
 @Component({
-  imports: [CurrencyPipe, SearchComponent, TagsComponent, RouterLink, NotFoundComponent],
+  imports: [CurrencyPipe, SearchComponent, TagsComponent, RouterLink, NotFoundComponent, WeatherComponent],
   selector: 'app-home-component',
   styleUrl: './home-component.css',
   templateUrl: './home-component.html',
