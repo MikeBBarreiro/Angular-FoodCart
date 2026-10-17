@@ -20,14 +20,28 @@ export class WeatherComponent implements OnInit{
     
 
   ngOnInit(): void {
-    // console.log(this.weatherService.weatherData);
-    this.weatherService.getWeatherFromApi()
-      .pipe(catchError((err) => {
-        console.log(err);
-        throw err;
-      })
-    ).subscribe((data) => {
-      this.weatherData.set(data);
+
+    //before wrapper
+    // this.weatherService.getWeatherFromApi()
+    //   .pipe(catchError((err) => {
+    //     console.log(err);
+    //     throw err;
+    //   })
+    // ).subscribe((data) => {
+    //   this.weatherData.set(data);
+    // });
+  
+    console.log("On Init");
+
+     // Step 1: Run the location function check first
+    this.weatherService.getLocation().subscribe((hasLocation) => {
+      
+      // Step 2: This code executes ONLY after the location stream completes
+      this.weatherService.getWeatherFromApi().subscribe((data) => {
+        // Step 3: Write the weather details straight to your component signal
+        this.weatherData.set(data); 
+      });
+
     });
   }
 
