@@ -40,7 +40,7 @@ export class WeatherService {
         return this.http.get<weatherModel>(this.url);
     }
 
-    // 1. Wrap the location detection loop into a clean Observable stream or Observerbal Chain
+    // 1. Wrap the location detection loop into a clean Observable stream or Observerble Chain
     getLocation(): Observable<boolean> {
         return new Observable((observer) => {
             if ('geolocation' in navigator) {

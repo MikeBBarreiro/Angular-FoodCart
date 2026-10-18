@@ -10,7 +10,7 @@ import { NotFoundComponent } from '../not-found-component/not-found-component';
 import { WeatherComponent } from '../weather-component/weather-component';
 
 @Component({
-  imports: [CurrencyPipe, SearchComponent, TagsComponent, RouterLink, NotFoundComponent, WeatherComponent],
+  imports: [CurrencyPipe, SearchComponent, TagsComponent, RouterLink, NotFoundComponent],
   selector: 'app-home-component',
   styleUrl: './home-component.css',
   templateUrl: './home-component.html',

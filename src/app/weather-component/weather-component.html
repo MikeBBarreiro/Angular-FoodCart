@@ -1,8 +1,16 @@
-<!-- @for(data of weatherData(); track data.id){
-    <p>{{data.coord.lat}}</p>
-} -->
 
 @if (weatherData(); as data) {
-  <p style="display: inline;">Temperature: {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(2) }} °F</p> 
-  <p style="display: inline;"> City: {{data.name}}</p>
+    <button class="weatherHeaderBtn" 
+        [appTooltipDirective]="'Is it good Grilling Weather Today? Find out here!'" 
+        [delay]="1000"
+        [duration]="8000"
+        >
+        <div class="WeatherContainer">
+            <p> {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(0) }} <span>°F</span> </p> 
+            <img style="height: 58px;" src="https://openweathermap.org/img/wn/{{data.weather[0].icon}}@2x.png" alt="icon">
+        </div>
+    </button>
 }
+
+<!-- Outside the if, we could call the weatherData array's signal like so -->
+<!-- <p>{{weatherData()?.coord.lat}}</p> -->
