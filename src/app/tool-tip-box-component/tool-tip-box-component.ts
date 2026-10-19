@@ -33,7 +33,6 @@ import { Component, signal } from '@angular/core';
       display: block;
       overflow-wrap: break-word;  /* Standard property to wrap long words */
       word-break: break-word;     /* Older fallback to ensure standard words and links wrap */
-      // white-space: nowrap;
     }
     .tooltip-bubble.fade-in {
       opacity: 1;
@@ -53,7 +52,7 @@ import { Component, signal } from '@angular/core';
       height: 0;
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-bottom: 10px solid #bfc5ca; /* Matches the parent's background color */
+      border-bottom: 10px solid #bfc5ca;  /*  Matches the parent's background color */
     }
   `]
 })

@@ -1,15 +1,21 @@
 
 @if (weatherData(); as data) {
-    <button class="weatherHeaderBtn" 
-        [appTooltipDirective]="'Is it good Grilling Weather Today? Find out here!'" 
-        [delay]="1000"
-        [duration]="8000"
-        >
-        <div class="WeatherContainer">
-            <p> {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(0) }} <span>°F</span> </p> 
-            <img style="height: 58px;" src="https://openweathermap.org/img/wn/{{data.weather[0].icon}}@2x.png" alt="icon">
+    <a [routerLink]="['/weather-page']" [state]="{ weatherData: weatherData() }">
+
+        <div class="weatherHeaderBtn" 
+            [appTooltipDirective]="'Is it good Grilling Weather Today? Find out here!'" 
+            [delay]="1000"
+            [duration]="8000"
+            >
+            
+            <div class="WeatherContainer">
+                <p> {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(0) }} <span>°F</span> </p> 
+                <img style="height: 58px;" src="https://openweathermap.org/img/wn/{{data.weather[0].icon}}@2x.png" alt="icon">
+            </div>
+        
         </div>
-    </button>
+        
+    </a>
 }
 
 <!-- Outside the if, we could call the weatherData array's signal like so -->

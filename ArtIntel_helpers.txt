@@ -1,0 +1,6 @@
+Trying to understand Attribute Directives
+https://share.google/aimode/VHkWoQLyLWfEXXtrX
+Trying to understand promise calls, or a way to call a function after one completes
+https://share.google/aimode/ydI3YS6Lrhru77Pi6
+Trying to understand a better way of calling functions, after one finishes. This is the GO TO!
+https://share.google/aimode/btVx4oE3Rt1FuyAza

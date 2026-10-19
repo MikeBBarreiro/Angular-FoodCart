@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { WeatherPageComponent } from './weather-page-component';
+
+describe('WeatherPageComponent', () => {
+  let component: WeatherPageComponent;
+  let fixture: ComponentFixture<WeatherPageComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [WeatherPageComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(WeatherPageComponent);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -30,3 +30,8 @@ div p span{
     float: inline-end;
     margin: 0;
 }
+
+a{
+    color: whitesmoke;
+    text-decoration: none;
+}

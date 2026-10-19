@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
 import { weatherModel } from '../../shared/models/weatherDataModel';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Service()
 
@@ -9,23 +9,23 @@ export class WeatherService {
     
     //weatherData: Array<weatherModel> = [];
     http = inject(HttpClient) //this gives us all the access needs for HTTP. ei. GET POST DELTE..ex;
+    
     url: string = "";
     geoLocate:boolean = false;
     latitude?: number;
     longitude?: number;
 
+    //Lets create a variable property that will be used throughout the entire application by using a signal
+    globalWeatherData = signal<any>(null)
+
     //Import use of @ngx-env/builder package
     private apiKey = import.meta.env['NG_APP_WEATHER_API_KEY'];
 
     constructor(){
-        // this.getLocation();
-        // this.getWeatherFromApi();
     }
 
     getWeatherFromApi(){
 
-        this.getLocation();
-        
         //Do we have geolocation on the browser? If not, default to the big easy.
         if(!this.geoLocate){
             this.url = `https://api.openweathermap.org/data/2.5/weather?lat=29.951065&lon=-90.071533&appid=${this.apiKey}`
@@ -36,8 +36,15 @@ export class WeatherService {
         //Return an array of weatherModel's
         // return this.http.get<Array<weatherModel>>(this.url);
 
-        //Return an single object of weatherModel.
-        return this.http.get<weatherModel>(this.url);
+        //Return an single object of weatherModel. while we return the object, 
+        // lets interccept the pipe by tapping into it and setting the global variable
+        
+        //the .pipe() -- This means we can access the pipe from http and get a "snap shot".. onto that stream of data (water through a pipe) to alter, inspect, or transform the data before it reaches your final destination .subscribe() block.
+        //[ HTTP Get Request ] ---> .pipe( tool1, tool2 ) YOU ARE HERE ---> [ Final Destination .subscribe() ]
+        //the tap -- is a passive observer, it lets you "tap into" the stream, look at the data and do somthing with it.. like saving to a Global signal variable.
+        return this.http.get<weatherModel>(this.url).pipe(
+            tap(data => this.globalWeatherData.set(data))
+        );
     }
 
     // 1. Wrap the location detection loop into a clean Observable stream or Observerble Chain

@@ -1,11 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { WeatherService } from '../services/weather/weather-service';
 import { weatherModel } from '../shared/models/weatherDataModel';
 import { TooltipDirective } from '../directives/tooltip-directive';
 import { catchError, switchMap } from 'rxjs';
 
 @Component({
-  imports: [TooltipDirective],
+  imports: [RouterLink, TooltipDirective],
   standalone: true,
   selector: 'app-weather-component',
   styleUrl: './weather-component.css',
@@ -19,7 +20,6 @@ export class WeatherComponent implements OnInit{
     //if multiple objects came back of multiple cityes or just more then one data point we can make 
     // our weatherData into an array like so
     // weatherData = signal<Array<weatherModel>>([]);
-    
 
   ngOnInit(): void {
 

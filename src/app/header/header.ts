@@ -8,4 +8,5 @@ import { WeatherComponent } from '../weather-component/weather-component';
   styleUrl: './header.css',
   templateUrl: './header.html',
 })
+
 export class HeaderComponent {}
