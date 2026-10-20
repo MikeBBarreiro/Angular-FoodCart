@@ -1,1 +1,13 @@
-<p>weather-page-component works!</p>
+<div class="weather-page-container">
+  @if (data()) {
+    <!-- Displays automatically the exact millisecond the header's subscription finishes -->
+    <h1>Detailed Weather Page</h1>
+    <p>Temperature: {{ data().main.temp }}°F</p>
+    <!-- <p>HMI Location: {{ data().location }}</p> -->
+  } @else {
+    <!-- Displays if the header component's API data is still loading from the HMI -->
+    <div class="loading-spinner">
+      <p>Retrieving weather data stream from weather service...</p>
+    </div>
+  }
+</div>

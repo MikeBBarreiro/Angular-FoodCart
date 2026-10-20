@@ -4,6 +4,7 @@ import { WeatherService } from '../services/weather/weather-service';
 import { weatherModel } from '../shared/models/weatherDataModel';
 import { TooltipDirective } from '../directives/tooltip-directive';
 import { catchError, switchMap } from 'rxjs';
+import { GlobalService } from '../shared/services/global-service';
 
 @Component({
   imports: [RouterLink, TooltipDirective],
@@ -16,6 +17,7 @@ import { catchError, switchMap } from 'rxjs';
 export class WeatherComponent implements OnInit{
 
     weatherService = inject(WeatherService);
+    globalService = inject(GlobalService);
     weatherData = signal<weatherModel | null>(null);
     //if multiple objects came back of multiple cityes or just more then one data point we can make 
     // our weatherData into an array like so
@@ -41,7 +43,9 @@ export class WeatherComponent implements OnInit{
       // Step 2: This code executes ONLY after the location stream completes
       this.weatherService.getWeatherFromApi().subscribe((data) => {
         // Step 3: Write the weather details straight to your component signal
-        this.weatherData.set(data); 
+        this.weatherData.set(data);
+        // update teh GlobalService, so this data can be used else where asynchronously.  
+        this.globalService.setWeatherPageData(data);
       });
    
       //The below is more efficient and should be used in the future instead of the above. they both do the same, but below is better practice and above can create memory leaks, as subsriptions will need to be destroyed eventually.

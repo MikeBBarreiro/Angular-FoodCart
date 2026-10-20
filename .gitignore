@@ -8,6 +8,9 @@
 # ignore text files
 .txt
 
+# gnore this directory
+/Documentation
+
 # Compiled output
 /dist
 /tmp
