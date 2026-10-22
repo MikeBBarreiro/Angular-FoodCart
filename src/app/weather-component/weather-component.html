@@ -9,12 +9,13 @@
             >
             
             <div class="WeatherContainer">
-                <p> {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(0) }} <span>°F</span> </p> 
+                <p> {{ data.main?.temp.toFixed(0) }} <span>°F</span> </p> 
+                <!-- <p> {{ ((data.main?.temp - 273.15) * 1.8 + 32).toFixed(0) }} <span>°F</span> </p>  -->
                 <img style="height: 58px;" src="https://openweathermap.org/img/wn/{{data.weather[0].icon}}@2x.png" alt="icon">
             </div>
         
         </div>
-        
+
     </a>
 }
 

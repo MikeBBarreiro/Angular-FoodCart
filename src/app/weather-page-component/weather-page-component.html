@@ -1,13 +1,71 @@
-<div class="weather-page-container">
-  @if (data()) {
-    <!-- Displays automatically the exact millisecond the header's subscription finishes -->
-    <h1>Detailed Weather Page</h1>
-    <p>Temperature: {{ data().main.temp }}°F</p>
-    <!-- <p>HMI Location: {{ data().location }}</p> -->
-  } @else {
-    <!-- Displays if the header component's API data is still loading from the HMI -->
-    <div class="loading-spinner">
-      <p>Retrieving weather data stream from weather service...</p>
+<h1 class="titles">Backyard BBQ Forecast Details</h1>
+
+@if (data()) {
+
+    <p class="location-p" style="font-size: 1.6rem;">
+        <img src="/images/pin.png" />
+        {{data().name}} - {{data().weather[0].description}}
+    </p>
+
+   <div class="weather-page-container" animate.enter="fade-in-class">
+        <!-- Displays automatically the exact millisecond the WeatherComponents subscription finishes -->
+
+        <div class="details">
+
+            <h1>Is It a Good Day for a Grilling outing?</h1>
+
+            @if(answer){
+                <h2 class="answer">Yes! Get on out there!</h2>
+            }
+            @else{
+                <h2 class="answer">Looks like today's cookout is staying indoors.</h2>
+            }
+
+            <div class="innerDetails">
+                <ul>
+                    <!-- ?? 0 means the return value will be 0 if this main.temp is null -->
+                    <li class="temperature {{
+                            (data().main?.temp ?? 0) > 65 && (data().main?.temp ?? 0) < 85 
+                            ? 'good-range' : 'not-good'
+                        }}">
+                        Temperature: {{ data().main?.temp.toFixed(0) }} <span>°F</span> 
+                    </li>
+
+                    <li class="feels_like {{
+                            (data().main?.feels_like ?? 0) > 65 && (data().main?.temp ?? 0) < 85 
+                            ? 'good-range' : 'not-good'
+                        }}"> 
+                        <span>Feels Like: </span>{{ data().main?.feels_like.toFixed(0) }} <span>°F</span> 
+                    </li>
+
+                    <li class="wind_speed {{
+                            (data().wind.speed ?? 0) < 10 ? 'good-range' : 'not-good'
+                        }}">
+                        Wind Speed: {{ data().wind.speed }} <span>MPH</span>
+                    </li>
+
+                    <li class="humidity {{
+                            (data().main?.humidity ?? 0) > 40 && (data().main?.humidity ?? 0) <= 70
+                            ? 'good-range' : 'not-good'
+                        }}"> 
+                        Humidity: {{ data().main?.humidity }} <span>%</span>
+                    </li>
+
+                    <li class="pressure {{
+                            ((data().main?.pressure * 0.0145038)) > 12 && (data().main?.pressure * 0.0145038) < 15.2 ? 'good-range' : 'not-good'
+                        }}"> 
+                        Pressure: {{ (data().main?.pressure * 0.0145038).toFixed(2) }} <span>PSI</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  }
-</div>
+} @else {
+    <!-- Displays if the header component's API data is still loading from the HMI -->
+    <div class="loading-spinner" >
+        <p>Retrieving weather data stream from weather service...</p>
+        <img src="/images/tri-spinner.gif" height="140px" width="140px">
+    </div>
+}
+
+

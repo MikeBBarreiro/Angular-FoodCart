@@ -1,0 +1,208 @@
+.weather-page-container{
+    width: 58%;
+    min-width: 530px;
+    min-height: 740px;
+    padding: 0px 0px 10% 0px;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    background-image: url('../../../public/images/BackYardWeatherDetails_Img.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 24px;
+}
+
+.loading-spinner{
+    text-align: center;
+}
+
+.titles{
+    /* display: flex; */
+    position: relative;
+    color: #292828;
+    text-align: center;
+    align-items: center; /* vertically center */
+    font-family: 'Lato', sans-serif;
+    font-size: 4rem;
+    margin: 2rem;
+}
+
+.location-p{
+    text-align: center;
+}
+
+.location-p img{
+    height: 20px; 
+    width: 20px;
+    margin: 0px 5px;
+}
+
+.weatherIconDescription{
+    position: absolute;
+    right: 2%;
+    top: 1%;
+}
+
+.weatherDescription{
+    margin: 0;
+    position: absolute;
+    right: 2%;
+    top: 1%;
+}
+
+.weatherIcon{
+    position: absolute;
+    right: 2%;
+    top: 1%;
+}
+
+.details h1{
+    text-align: center;
+    color: whitesmoke;
+    font-weight: 300;
+}
+
+.details h2 {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: 300;
+}
+
+.details{
+    position: relative;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Semi-transparent tint (darkens or lightens the background slightly) */
+    background-color: rgba(0, 0, 0, 0.3); 
+
+    /* The core blur effect */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+
+    padding: 2.5% 10px;
+
+    /* Center your content inside the overlay */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px; */
+}
+
+.details ul li {
+    list-style: none;
+}
+
+.details .innerDetails{
+    background-color: rgb(61, 61, 61, 0.4);
+    margin: auto;
+    padding: 2rem;
+    width: fit-content;
+    border-radius: 0.8rem;
+}
+
+/* Temperature */
+.details .temperature{
+    color: #292828;
+    font-size: 2.5rem;
+}
+
+.details .temperature.not-good{
+    color: #e72929;
+    /* color: rgb(204, 49, 49); */
+    font-weight: 400;
+    text-shadow: #292828 2px 2px 2px;
+}
+
+.details .temperature.good-range{
+    color: rgb(100, 151, 33);
+    font-weight: bold;
+    text-shadow: #292828 2px 2px 12px;
+}
+
+/* Feels Like */
+.details .feels_like{
+    color: #292828;
+    font-size: 2.5rem;
+}
+
+.details .feels_like.not-good{
+    color: #e72929;
+    font-weight: 400;
+    text-shadow: #292828 2px 2px 2px;
+}
+
+.details .feels_like.good-range{
+    color: rgb(100, 151, 33);
+    font-weight: bold;
+    text-shadow: #292828 2px 2px 12px;
+}
+
+/* Wind Speed */
+.wind_speed{
+    color: #292828;
+    font-size: 2.5rem;
+}
+
+.details .wind_speed.not-good{
+    color: rgb(204, 49, 49);
+    font-weight: 400;
+    text-shadow: #292828 2px 2px 2px;
+}
+
+.details .wind_speed.good-range{
+    color: rgb(100, 151, 33);
+    font-weight: bold;
+    text-shadow: #292828 2px 2px 12px;
+}
+
+/* humidity */
+.humidity{
+    color: #292828;
+    font-size: 2.5rem;
+}
+
+.details .humidity.not-good{
+    color: rgb(204, 49, 49);
+    font-weight: 400;
+    text-shadow: #292828 2px 2px 2px;
+}
+
+.details .humidity.good-range{
+    color: rgb(100, 151, 33);
+    font-weight: bold;
+    text-shadow: #292828 2px 2px 12px;
+}
+
+/* Pressure */
+.pressure{
+    color: #292828;
+    font-size: 2.5rem;
+}
+
+.details .pressure.not-good{
+    color: rgb(204, 49, 49);
+    font-weight: 400;
+    text-shadow: #292828 2px 2px 2px;
+}
+
+.details .pressure.good-range{
+    color: rgb(100, 151, 33);
+    font-weight: bold;
+    text-shadow: #292828 2px 2px 12px;
+}
+
+.fade-in-class {
+  transition: opacity 300ms ease-in;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}

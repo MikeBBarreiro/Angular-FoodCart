@@ -77,4 +77,5 @@ li a:hover{
 
 img{
     max-height: 65%;
+    min-height: 65%;
 }

@@ -28,7 +28,7 @@ export class WeatherService {
 
         //Do we have geolocation on the browser? If not, default to the big easy.
         if(!this.geoLocate){
-            this.url = `https://api.openweathermap.org/data/2.5/weather?lat=29.951065&lon=-90.071533&appid=${this.apiKey}`
+            this.url = `https://api.openweathermap.org/data/2.5/weather?lat=29.951065&lon=-90.071533&units=imperial&appid=${this.apiKey}`
         }else{
             this.url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&appid=${this.apiKey}`
         }
@@ -38,7 +38,7 @@ export class WeatherService {
 
         //Return an single object of weatherModel. while we return the object, 
         // lets interccept the pipe by tapping into it and setting the global variable
-        
+
         //the .pipe() -- This means we can access the pipe from http and get a "snap shot".. onto that stream of data (water through a pipe) to alter, inspect, or transform the data before it reaches your final destination .subscribe() block.
         //[ HTTP Get Request ] ---> .pipe( tool1, tool2 ) YOU ARE HERE ---> [ Final Destination .subscribe() ]
         //the tap -- is a passive observer, it lets you "tap into" the stream, look at the data and do somthing with it.. like saving to a Global signal variable.
